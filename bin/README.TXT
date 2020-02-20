@@ -1,7 +1,13 @@
-﻿目录包含：
+
+下载说明：
+  此程序体积较大，包括多个平台的版本，如果在GITHUB网站下载xdisp_virt困难，可前往CSDN下载：
+  https://download.csdn.net/download/fanxiushu/12125875
+  不过如果以后有版本修正，可能还是得从GITHUB下载。
+
+目录包含：
    xdisp_virt.exe程序，xdisp_virt.ini是它的配置文件，
    xdisp_server.exe程序，xdisp_server.ini是它的配置文件。
-   dx_hook32.dll, dxhook64.dll是自动注入进每个界面进程挂钩DirectX和OpenGL绘图的动态库。
+   linux目录是xdisp_virt对应的linux版本，macOS目录是xdisp_virt对应的macOS版本。
    配置文件有详细的每个字段说明。
    已经配置成默认设置，可以直接运行exe程序。
    xdisp_server.exe提供了服务器中转解决内网访问等问题, 同时能把多台被控制机器集中到一起，
@@ -22,6 +28,19 @@
    从而可跨越域局域网远程控制。
 
    如果有必要，可以安装driver目录下的镜像驱动和hid_driver目录下的虚拟鼠标键盘驱动。
+
+2019-12月 - 2020-1月更新：
+1，移植xdisp_virt程序到 macOS，linux平台。
+     详细信息，请查看：
+        https://blog.csdn.net/fanxiushu/article/details/103428592
+        https://blog.csdn.net/fanxiushu/article/details/103529339
+        https://blog.csdn.net/fanxiushu/article/details/103662309
+        https://blog.csdn.net/fanxiushu/article/details/103772801
+2，给xdisp_virt集成RTSP,RTMP,HTTP-FLV,HLS直播服务端功能。
+     详细信息，请查看：
+        https://blog.csdn.net/fanxiushu/article/details/104078323
+3，给xdisp_server.exe服务程序集成了各种直播服务端，这样可以在中转服务器上直播登录上来的各个xdisp_virt被控制端桌面图像。
+4，添加手指触摸控制，给移动平台浏览器控制PC提供了方便，不过比起鼠标键盘控制还是不能比较。
 
 2019-6月更新：
 1，优化RGB转YUV代码，使得转换时间更少，转换之后的图像质量更好。
@@ -67,6 +86,35 @@
    安装hid_driver目录中对应的驱动，然后重启xdisp_virt程序，就会自动切换到虚拟鼠标键盘驱动控制。
    这是为某些全屏游戏无法通过应用层模拟鼠标键盘控制而增加的功能。
 
- fanxiushu 2019-04-21
+ fanxiushu 2017-2019
+
+=======================================
+The directory contains:
+   The xdisp_virt.exe program, xdisp_virt.ini is its configuration file.
+   The xdisp_server.exe program, xdisp_server.ini, is its configuration file.
+   Dx_hook32.dll, dxhook64.dll is a dynamic library that automatically injects into each interface process hooking DirectX and OpenGL drawing.
+   The configuration file has detailed descriptions of each field.
+   Already configured as the default, you can run the exe program directly.
+   Xdisp_server.exe provides server relay to solve problems such as intranet access, and can bring together multiple controlled machines.
+   There are certain benefits for maintenance personnel
+
+Instructions:
+   Copy xdisp_virt.exe, xdisp_virt.ini to a directory on your local computer.
+   Run xdisp_virt.exe directly as prompted. The default port is 11000.
+   You can do various configurations by opening http://localhost:11000 locally with your browser.
+   Suppose the machine running xdisp_virt is 192.168.1.1
+   Open http://192.168.1.1:11000 on other PCs, mobile phones, tablets and other browsers to remotely control.
+   The program will generate the xdisp_virt.db file, which is the unique ID for saving various configuration parameters and identifying different machines. Do not copy this file to a different machine.
+
+   Copy xdisp_server.exe and xdisp_server.ini to the public network server, the default port is 32000.
+   Then all xdisp_virt settings are connected to the server running xdisp_server.
+   Suppose the public network IP of the xdisp_server machine is 13.14.15.16
+   Then open http://13.14.15.16:32000 on other PCs, mobile phones, tablets and other browsers to see all the xdisp_virt lists that are connected.
+   This allows remote control across domain LANs.
+
+   If necessary, you can install the mirror driver in the driver directory and the virtual mouse and keyboard driver in the hid_driver directory.
+
+fanxiushu 2017-2019
+
 
      
